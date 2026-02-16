@@ -1,34 +1,31 @@
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden">
-            {/* Background Decor */}
-            <div className="glow-orb -top-20 -left-20"></div>
-            <div className="glow-orb top-1/2 right-0 translate-y-[-50%] opacity-10"></div>
+        <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 overflow-hidden">
+            {/* Background Image Placeholder with Overlay */}
+            <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-black/40 z-10"></div>
+                <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
+            </div>
 
-            <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none -z-10 bg-[radial-gradient(var(--primary)_1px,transparent_1px)] [background-size:20px_20px]"></div>
-
-            <div className="max-w-4xl px-8 text-center space-y-8 relative z-10">
-                <div className="inline-block px-4 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest animate-pulse">
-                    NTRL: The Organic Evolution
-                </div>
-
-                <h1 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter text-gradient pb-4 uppercase">
-                    Nutrition. Training. <br /> Resilience. Longevity.
+            <div className="max-w-5xl px-8 text-center space-y-8 relative z-20 text-white">
+                <h1 className="text-6xl md:text-8xl font-serif font-bold leading-[1.1] tracking-tight">
+                    Build Strength. <br /> Naturally.
                 </h1>
 
-                <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto font-medium">
-                    Pure organic training. No supplements, no shortcuts. Just raw science-backed techniques designed for the modern elite athlete.
+                <p className="text-lg md:text-xl max-w-2xl mx-auto font-medium opacity-90">
+                    Achieve real fitness with a natural approach to health. Pure techniques, organic nutrition, sustainable results.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                    <button className="bg-primary text-black px-10 py-4 rounded-full font-black text-lg uppercase tracking-tighter hover:bg-white transition-colors cursor-pointer">
-                        Book Your Consult
-                    </button>
-                    <button className="bg-transparent border border-white/20 hover:bg-white/10 px-10 py-4 rounded-full font-black text-lg uppercase tracking-tighter transition-all cursor-pointer">
-                        Our Methods
+                <div className="pt-8">
+                    <button className="bg-primary text-white px-12 py-5 rounded-md font-bold text-lg uppercase tracking-widest hover:bg-primary/90 transition-all flex items-center gap-3 mx-auto shadow-2xl">
+                        Start Training
+                        <span className="text-xl">›</span>
                     </button>
                 </div>
             </div>
+
+            {/* Decorative Blur Bottom */}
+            <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-background to-transparent z-10"></div>
         </section>
     );
 }

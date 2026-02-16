@@ -1,50 +1,44 @@
-const services = [
+const programs = [
     {
-        title: "Strength & Gaining",
-        desc: "Build muscle mass with our scientifically backed hypertrophy programs.",
-        tags: ["Bulking", "Hypertrophy"]
+        title: "Strength Training",
+        desc: "Build functional strength naturally through compound movements.",
+        icon: "🏋️",
+        pillar: "Training"
     },
     {
-        title: "Weight Loss",
-        desc: "Target fat loss while maintaining lean muscle with high-intensity training.",
-        tags: ["Cutting", "Cardio"]
+        title: "Fat Loss",
+        desc: "Burn fat with balanced, effective workouts and metabolic conditioning.",
+        icon: "🏔️",
+        pillar: "Metabolism"
     },
     {
-        title: "Online Coaching",
-        desc: "Get personalized diet and workout plans from anywhere in the world.",
-        tags: ["Remote", "Weekly Check-ins"]
+        title: "Healthy Living",
+        desc: "Learn sustainable habits for life, from sleep to organic nutrition.",
+        icon: "🍃",
+        pillar: "Longevity"
     }
 ];
 
 export default function Services() {
     return (
-        <section className="py-24 px-8 max-w-7xl mx-auto">
-            <div className="flex justify-between items-end mb-16">
-                <div>
-                    <h2 className="text-primary text-sm font-bold uppercase tracking-[0.2em] mb-4">What we offer</h2>
-                    <h3 className="text-4xl md:text-5xl font-black tracking-tighter">ELITE PROGRAMS</h3>
-                </div>
-                <button className="text-zinc-500 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest hidden md:block">
-                    Explore All &rarr;
-                </button>
+        <section id="programs" className="py-24 px-8 max-w-7xl mx-auto">
+            <div className="mb-16">
+                <h2 className="text-zinc-500 font-bold uppercase tracking-[0.3em] text-sm mb-4">Our Programs</h2>
+                <div className="w-20 h-1 bg-primary mb-12"></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {services.map((s, i) => (
-                    <div key={i} className="glass p-8 rounded-[32px] hover:border-primary/50 transition-all group">
-                        <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-black transition-colors">
-                            ★
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {programs.map((p, i) => (
+                    <div key={i} className="bg-white p-12 rounded-lg border border-accent flex flex-col items-center text-center group hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                        <div className="text-5xl mb-8 group-hover:scale-110 transition-transform grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            {p.icon}
                         </div>
-                        <h4 className="text-2xl font-black mb-4 tracking-tight">{s.title}</h4>
-                        <p className="text-zinc-500 font-medium mb-8 leading-relaxed">
-                            {s.desc}
+                        <h3 className="text-2xl font-serif font-bold mb-4">{p.title}</h3>
+                        <p className="text-zinc-500 leading-relaxed mb-8">
+                            {p.desc}
                         </p>
-                        <div className="flex gap-2">
-                            {s.tags.map(t => (
-                                <span key={t} className="text-[10px] font-bold uppercase tracking-widest py-1 px-3 rounded-full bg-white/5 border border-white/10 text-zinc-400">
-                                    {t}
-                                </span>
-                            ))}
+                        <div className="text-[10px] font-black uppercase tracking-[0.3em] text-primary/50 group-hover:text-primary transition-colors">
+                            Pillar: {p.pillar}
                         </div>
                     </div>
                 ))}

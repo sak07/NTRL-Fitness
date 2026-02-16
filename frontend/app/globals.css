@@ -1,29 +1,41 @@
 @import "tailwindcss";
 
+/* 
+  NTRL Organic Aesthetic 
+  Palette: Sage Green, Sandy Beige, Off-white, Earthy Zinc
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --primary: #10b981;
-  /* Emerald for light mode */
-  --secondary: #f4f4f5;
-  --accent: #e4e4e7;
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(0, 0, 0, 0.1);
-  --grid-color: rgba(0, 0, 0, 0.05);
-  --noise-opacity: 0.05;
+  --background: #f8f5f2;
+  /* Sandy Beige */
+  --foreground: #2d342d;
+  /* Earthy Dark Green/Grey */
+  --primary: #5a7d4a;
+  /* Sage Green */
+  --secondary: #ffffff;
+  --accent: #e5e0d8;
+  /* Light Stone */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(90, 125, 74, 0.1);
+  --grid-color: rgba(90, 125, 74, 0.03);
+  --noise-opacity: 0.03;
+
+  /* Typography */
+  --font-serif: "EB Garamond", serif;
 }
 
 [data-theme='dark'] {
-  --background: #050505;
-  --foreground: #ffffff;
-  --primary: #ccff00;
-  /* Battery Green */
-  --secondary: #1a1a1a;
-  --accent: #333333;
+  --background: #1a1c1a;
+  /* Very Dark Forest */
+  --foreground: #f8f5f2;
+  --primary: #8fb67b;
+  /* Lighter Sage */
+  --secondary: #242624;
+  --accent: #2d302d;
   --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --grid-color: rgba(255, 255, 255, 0.03);
-  --noise-opacity: 0.15;
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --grid-color: rgba(255, 255, 255, 0.02);
+  --noise-opacity: 0.1;
 }
 
 @theme inline {
@@ -33,20 +45,32 @@
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Inter", var(--font-geist-sans), sans-serif;
+  --font-serif: var(--font-serif);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), sans-serif;
-  overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  position: relative;
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-serif {
+    font-family: var(--font-serif);
+    font-weight: 600;
+  }
 }
 
-/* Base Texture Layer */
+/* Texture & Depth */
 body::before {
   content: "";
   position: fixed;
@@ -57,12 +81,11 @@ body::before {
   background-image:
     linear-gradient(var(--grid-color) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-size: 80px 80px;
   pointer-events: none;
   z-index: -10;
 }
 
-/* Noise Layer */
 body::after {
   content: "";
   position: fixed;
@@ -78,12 +101,12 @@ body::after {
 
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--glass-border);
 }
 
 .text-gradient {
-  background: linear-gradient(to right, var(--foreground), var(--primary));
+  background: linear-gradient(to bottom right, var(--foreground), var(--primary));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -91,11 +114,11 @@ body::after {
 
 .glow-orb {
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 800px;
+  height: 800px;
   background: var(--primary);
-  filter: blur(150px);
-  opacity: 0.12;
+  filter: blur(180px);
+  opacity: 0.08;
   border-radius: 50%;
   pointer-events: none;
   z-index: -5;
@@ -104,5 +127,27 @@ body::after {
 .section-divider {
   height: 1px;
   width: 100%;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.card-shine:hover::after {
+  opacity: 1;
 }

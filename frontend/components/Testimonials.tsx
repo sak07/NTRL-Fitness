@@ -1,48 +1,39 @@
 "use client";
 
-const testimonials = [
+const stories = [
     {
-        name: "Alex Johnson",
-        role: "Athlete",
-        content: "NTRLFIT changed my life. The personalized coaching and support are unmatched.",
-        image: "AJ"
+        name: "Mike R.",
+        quote: "I've never felt better and stronger. Natural training changed how I view my potential.",
+        img: "https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=1780&auto=format&fit=crop"
     },
     {
-        name: "Sarah Miller",
-        role: "Yoga Instructor",
-        content: "Building strength was easy with their science-based programs. Highly recommended!",
-        image: "SM"
-    },
-    {
-        name: "Mike Ross",
-        role: "Marathon Runner",
-        content: "The trainers here really know their stuff. My performance has skyrocketed.",
-        image: "MR"
+        name: "Sarah L.",
+        quote: "Natural fitness changed my life! The organic approach is sustainable and empowering.",
+        img: "https://images.unsplash.com/photo-1583454110551-21f2fa202111?q=80&w=2070&auto=format&fit=crop"
     }
 ];
 
 export default function Testimonials() {
     return (
         <section className="py-24 px-8 max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-                <h2 className="text-primary text-sm font-bold uppercase tracking-[0.2em] mb-4">Success Stories</h2>
-                <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">WHAT OUR MEMBERS SAY</h3>
+            <div className="mb-16">
+                <h2 className="text-zinc-500 font-bold uppercase tracking-[0.3em] text-sm mb-4">Success Stories</h2>
+                <div className="w-20 h-1 bg-primary"></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {testimonials.map((t, i) => (
-                    <div key={i} className="glass p-10 rounded-[40px] relative overflow-hidden group hover:scale-[1.02] transition-transform">
-                        <div className="text-6xl text-primary/10 absolute -top-2 -left-2 font-serif">"</div>
-                        <p className="text-zinc-500 font-medium italic mb-8 relative z-10 leading-relaxed text-lg">
-                            {t.content}
-                        </p>
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">
-                                {t.image}
-                            </div>
-                            <div>
-                                <h4 className="font-bold tracking-tight">{t.name}</h4>
-                                <p className="text-xs text-zinc-500 uppercase tracking-widest font-bold">{t.role}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {stories.map((s, i) => (
+                    <div key={i} className="group relative h-[450px] rounded-2xl overflow-hidden cursor-pointer">
+                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all z-10"></div>
+                        <img src={s.img} alt={s.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+
+                        <div className="absolute inset-x-0 bottom-0 p-12 z-20 text-white">
+                            <div className="mb-6 opacity-30 text-6xl font-serif italic">"</div>
+                            <p className="text-2xl font-serif font-medium leading-relaxed mb-8">
+                                {s.quote}
+                            </p>
+                            <div className="font-bold uppercase tracking-widest text-sm border-t border-white/20 pt-6">
+                                {s.name}
                             </div>
                         </div>
                     </div>
