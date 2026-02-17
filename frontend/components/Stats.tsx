@@ -1,5 +1,7 @@
 "use client";
 
+import AnimatedCounter from "./AnimatedCounter";
+
 const stats = [
     { label: "Active Members", value: "10K+", detail: "Natural Transformations" },
     { label: "Expert Trainers", value: "50+", detail: "NTRL Certified Coaches" },
@@ -14,7 +16,7 @@ export default function Stats() {
                 {stats.map((s, i) => (
                     <div key={i} className="text-center group">
                         <div className="text-5xl md:text-6xl font-serif font-bold tracking-tight text-primary mb-2 transition-transform group-hover:scale-110 duration-500">
-                            {s.value}
+                            <AnimatedCounter value={s.value} />
                         </div>
                         <div className="text-sm font-bold uppercase tracking-[0.2em] text-foreground mb-1">
                             {s.label}
