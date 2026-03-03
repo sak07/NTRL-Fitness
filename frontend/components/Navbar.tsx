@@ -1,40 +1,63 @@
 "use client";
 
-import Link from 'next/link';
-import ThemeToggle from './ThemeToggle';
+import { useMemo } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  const navItems = useMemo(
+    () => [
+      { label: "Home", href: "/" },
+      { label: "About", href: "/about" },
+      { label: "Features", href: "/#features" },
+      { label: "Success Stories", href: "/#stories" }
+    ],
+    []
+  );
 
   return (
-    <nav className="fixed top-0 w-full z-50 py-6 px-12 flex justify-between items-center transition-all bg-background/80 backdrop-blur-md border-b border-accent/20">
-      <div
-        className="flex items-center gap-3 cursor-pointer group"
-        onClick={scrollToTop}
-      >
-        <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-          <span className="text-white text-lg font-bold">N</span>
+    <div className="relative z-50 bg-white">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:px-10">
+        <div className="flex items-center gap-2">
+          <Link href="/" className="text-2xl font-extrabold tracking-tight text-[#76B15B]">
+            NTRL
+          </Link>
         </div>
-        <div className="text-2xl font-serif font-bold tracking-tight text-foreground">
-          NTRL
+
+        <nav className="hidden items-center gap-8 md:flex">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href || (isHome && item.href === "/");
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`relative text-sm font-medium transition-colors ${isActive ? "text-zinc-900" : "text-zinc-500 hover:text-zinc-800"
+                  }`}
+              >
+                {item.label}
+                {isActive && (
+                  <span className="absolute -bottom-3 left-0 h-[2px] w-full rounded-full bg-[#76B15B]" />
+                )}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="flex items-center gap-4">
+          <Link
+            href="/login"
+            className="hidden text-sm font-semibold text-zinc-700 hover:text-zinc-900 md:block"
+          >
+            Login
+          </Link>
+          <button className="rounded-full bg-gradient-to-b from-[#76B15B] to-[#458237] px-5 py-2 text-sm font-bold text-white shadow-md shadow-[#76B15B]/25 transition active:scale-[0.98]">
+            Join Now
+          </button>
         </div>
       </div>
-
-      <div className="hidden md:flex gap-10 text-[13px] font-bold uppercase tracking-[0.15em] text-foreground/70">
-        <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-        <Link href="/programs" className="hover:text-primary transition-colors">Programs</Link>
-        <Link href="/#about" className="hover:text-primary transition-colors">About</Link>
-        <Link href="/#contact" className="hover:text-primary transition-colors">Contact</Link>
-      </div>
-
-      <div className="flex items-center gap-6">
-        <ThemeToggle />
-        <button className="bg-primary text-white px-8 py-3 rounded-md font-bold text-sm uppercase tracking-widest hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
-          Get Started
-        </button>
-      </div>
-    </nav>
+    </div>
   );
 }

@@ -6,31 +6,28 @@
 */
 
 :root {
-  --background: #f8f5f2;
-  /* Sandy Beige */
-  --foreground: #2d342d;
-  /* Earthy Dark Green/Grey */
-  --primary: #5a7d4a;
-  /* Sage Green */
-  --secondary: #ffffff;
+  --background: #ffffff;
+  --foreground: #333333;
+  --primary: #458237;
+  /* NTRL Green */
+  --primary-light: #76b15b;
+  /* Accent Green */
+  --secondary: #f4f4f4;
   --accent: #e5e0d8;
-  /* Light Stone */
   --glass-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(90, 125, 74, 0.1);
-  --grid-color: rgba(90, 125, 74, 0.03);
-  --noise-opacity: 0.03;
+  --glass-border: rgba(69, 130, 55, 0.1);
+  --grid-color: rgba(69, 130, 55, 0.03);
+  --noise-opacity: 0.02;
 
   /* Typography */
   --font-serif: "EB Garamond", serif;
 }
 
 [data-theme='dark'] {
-  --background: #1a1c1a;
-  /* Very Dark Forest */
-  --foreground: #f8f5f2;
-  --primary: #8fb67b;
-  /* Lighter Sage */
-  --secondary: #242624;
+  --background: #121412;
+  --foreground: #fcfcfc;
+  --primary: #76b15b;
+  --secondary: #1a1c1a;
   --accent: #2d302d;
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.05);
